@@ -1,0 +1,12 @@
+# apiVersion: route.openshift.io/v1
+# kind: Route
+# metadata:
+#   name: example
+#   namespace: the-library
+# spec:
+#   path: /
+#   to:
+#     kind: Service
+#     name: example
+#   port:
+#     targetPort: 80

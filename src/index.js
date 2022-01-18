@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose
-  .connect(`mongodb://mongodb:27017/test?connectTimeoutMS=${process.env.CONNECTION_TIMEOUT_MS || 30000}`)
+  .connect(`mongodb://mongodb:27017?connectTimeoutMS=${process.env.CONNECTION_TIMEOUT_MS || 30000}`)
   .then(() => {
     console.log('conectou')
   }, error => console.log(error));

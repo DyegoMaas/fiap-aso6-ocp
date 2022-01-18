@@ -90,5 +90,5 @@ jobs:
       - name: Deploy to OpenShift
         run: |
           echo "Deploying application to OpenShift"
-          oc create -R ./k8s
+          oc create -R -f ./k8s
       # `oc create -R https://raw.githubusercontent/DyegoMaas/fiap-aso6-ocp/main/k8s`

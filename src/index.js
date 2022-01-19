@@ -8,14 +8,14 @@ const {
   CONNECTION_TIMEOUT_MS
 } = process.env
 
-await mongoose
+(async () => await mongoose
   .connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}:27017/${MONGO_DATABASE}?connectTimeoutMS=${CONNECTION_TIMEOUT_MS || 30000}`)
   .then(
     () => {
       console.log('conectou')
     }, 
     error => console.log(error)
-  );
+))();
 
 const Book = mongoose.model('Books', { 
   name: String,

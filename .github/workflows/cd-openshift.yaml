@@ -91,5 +91,7 @@ jobs:
         run: |
           echo "Deploying application to OpenShift"
           oc login --token=${{ secrets.OPENSHIFT_TOKEN }} --server=${{ secrets.OPENSHIFT_SERVER }}
+          oc new-app postgresql-persistent --name sample-database --param DATABASE_SERVICE_NAME=sample-database --param POSTGRESQL_USER=sampledb --param POSTGRESQL_PASSWORD=sampledb --param POSTGRESQL_DATABASE=sampledb
+          echo "POSTGRESQL CRIADO!"
           oc create -R -f ./k8s
       # `oc create -R https://raw.githubusercontent/DyegoMaas/fiap-aso6-ocp/main/k8s`

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: 'library'
-  namespace: the-library
+  namespace: "thelibrary2"
 spec:
   replicas: 1
   selector:

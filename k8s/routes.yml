@@ -2,7 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: library
-  namespace: the-library
+  namespace: "thelibrary2"
 spec:
   path: /library(/|$)(.*)
   to:

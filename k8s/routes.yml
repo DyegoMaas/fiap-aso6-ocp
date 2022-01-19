@@ -4,7 +4,7 @@ metadata:
   name: library
   namespace: the-library
 spec:
-  path: (/|$)(.*)
+  path: /library(/|$)(.*)
   to:
     kind: Service
     name: library

@@ -51,5 +51,7 @@ spec:
               secretKeyRef:
                 key:  mongo-admin-user
                 name: library-auth
+          - name: "MONGO_SERVER"
+            value: "mongodb"
           - name: "CONNECTION_TIMEOUT_MS"
             value: "30000"

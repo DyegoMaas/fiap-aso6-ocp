@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: 'library'
-  namespace: dyegomaas
+  namespace: the-library
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: library
-        image: dyegomaas/library:latest
+        image: quay.io/dyego_maas/the-library
         resources:
           limits:
             cpu: 200m
@@ -38,7 +38,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb
-  namespace: dyegomaas
+  namespace: the-library
 spec:
   replicas: 1
   selector:

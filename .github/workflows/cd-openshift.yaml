@@ -88,9 +88,10 @@ jobs:
         
       - name: Create MongoDB
         run: |
+          oc process -e MONGODB_USER=${{ secrets.MONGO_USER }} -e MONGODB_PASSWORD=${{ secrets.MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ secrets.MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ secrets.MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-26-rhel7 |\
           oc new-app -e MONGODB_USER=${{ secrets.MONGO_USER }} -e MONGODB_PASSWORD=${{ secrets.MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ secrets.MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ secrets.MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-26-rhel7
 
       - name: Deploy to OpenShift
         run: |
-          oc create -R -f ./k8s
+          oc apply -R -f ./k8s
       # `oc create -R https://raw.githubusercontent/DyegoMaas/fiap-aso6-ocp/main/k8s`

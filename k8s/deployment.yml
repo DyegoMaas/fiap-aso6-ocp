@@ -26,30 +26,25 @@ spec:
         ports:
         - containerPort: 80
         env:
-          - name: "LIBRARY_SECRET"
-            valueFrom:
-              secretKeyRef:
-                key:  library-secret
-                name: library-auth
-          - name: "MONGO_USER"
-            valueFrom:
-              secretKeyRef:
-                key:  mongo-user
-                name: library-auth
-          - name: "MONGO_PASSWORD"
-            valueFrom:
-              secretKeyRef:
-                key:  mongo-password
-                name: library-auth
-          - name: "MONGO_DATABASE"
-            valueFrom:
-              secretKeyRef:
-                key:  mongo-database
-                name: library-auth
-          - name: "MONGO_ADMIN"
-            valueFrom:
-              secretKeyRef:
-                key:  mongo-admin-user
-                name: library-auth
-          - name: "MONGO_SERVER"
-            value: "mongodb"
+        - name: "LIBRARY_SECRET"
+          valueFrom:
+            secretKeyRef:
+              key:  library-secret
+              name: library-auth
+        - name: "MONGO_USER"
+          valueFrom:
+            secretKeyRef:
+              key:  mongo-user
+              name: library-auth
+        - name: "MONGO_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              key:  mongo-password
+              name: library-auth
+        - name: "MONGO_DATABASE"
+          valueFrom:
+            secretKeyRef:
+              key:  mongo-database
+              name: library-auth
+        - name: "MONGO_SERVER"
+          value: "mongodb"

@@ -88,7 +88,7 @@ jobs:
         
       - name: Create MongoDB
         run: |
-          oc new-app -e MONGODB_USER=${{ MONGO_USER }} -e MONGODB_PASSWORD=${{ MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-26-rhel7
+          oc new-app -e MONGODB_USER=${{ secrets.MONGO_USER }} -e MONGODB_PASSWORD=${{ secrets.MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ secrets.MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ secrets.MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-26-rhel7
 
       - name: Deploy to OpenShift
         run: |

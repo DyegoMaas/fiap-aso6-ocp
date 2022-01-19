@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 
-const {
-  MONGO_SERVER,
-  MONGO_USER,
-  MONGO_PASSWORD,
-  MONGO_DATABASE,
-  CONNECTION_TIMEOUT_MS
-} = process.env
+const MONGO_SERVER = env.process.MONGO_SERVER
+const MONGO_USER = env.process.MONGO_USER
+const MONGO_PASSWORD = env.process.MONGO_PASSWORD
+const MONGO_DATABASE = env.process.MONGO_DATABASE
+const CONNECTION_TIMEOUT_MS = env.process.CONNECTION_TIMEOUT_MS
 
 (async () => await mongoose
   .connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}:27017/${MONGO_DATABASE}?connectTimeoutMS=${CONNECTION_TIMEOUT_MS || 30000}`)

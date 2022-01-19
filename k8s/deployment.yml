@@ -31,37 +31,25 @@ spec:
               secretKeyRef:
                 key:  library-secret
                 name: library-auth
+          - name: "MONGO_USER"
+            valueFrom:
+              secretKeyRef:
+                key:  mongo-user
+                name: library-auth
+          - name: "MONGO_PASSWORD"
+            valueFrom:
+              secretKeyRef:
+                key:  mongo-password
+                name: library-auth
+          - name: "MONGO_DATABASE"
+            valueFrom:
+              secretKeyRef:
+                key:  mongo-database
+                name: library-auth
+          - name: "MONGO_ADMIN"
+            valueFrom:
+              secretKeyRef:
+                key:  mongo-admin-user
+                name: library-auth
           - name: "CONNECTION_TIMEOUT_MS"
             value: "30000"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mongodb
-  namespace: the-library
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mongodb
-  template:
-    metadata:
-      labels:
-        app: mongodb
-    spec:
-      containers:
-      - name: mongodb
-        image: mongo:latest
-        ports:
-        - containerPort: 27017
-        resources:
-          requests:
-            ephemeral-storage: "1Gi"
-          limits:
-            ephemeral-storage: "2Gi"
-        volumeMounts:
-        - name: ephemeral
-          mountPath: "/data/db"
-      volumes:
-      - name: ephemeral
-        emptyDir: {}

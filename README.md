@@ -43,5 +43,4 @@ Alternativa é fazer um por um usando `oc create -f arquivo.yaml`.
 
 ## TODO
 
-- Fazer deploy da imagem no Quay.io
-- Montar deployment para o app
+- UTILIZAR Kustomize com generator para gerar o secret no pipeline: https://kubernetes.io/pt-br/docs/tasks/configmap-secret/managing-secret-using-kustomize/

@@ -73,7 +73,6 @@ jobs:
           # Authentication Token. Can use username and password instead.
           # Refer to Step 3.
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-# --token= --server=https://api.na46.prod.nextcle.com:6443
           # Credentials, if desired instead of token.
           # Username and password override token if they are set.
           # openshift_username: ${{ env.OPENSHIFT_USER }}
@@ -87,6 +86,10 @@ jobs:
           # Optional - this sets your Kubernetes context's current namespace after logging in.
           namespace: ${{ env.OPENSHIFT_NAMESPACE }} 
         
+      - name: Create MongoDB
+        run: |
+          oc new-app -e MONGODB_USER=${{ MONGO_USER }} -e MONGODB_PASSWORD=${{ MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-26-rhel7
+
       - name: Deploy to OpenShift
         run: |
           oc create -R -f ./k8s

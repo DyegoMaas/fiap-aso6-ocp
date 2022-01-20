@@ -20,6 +20,8 @@ const Book = mongoose.model('Books', {
   releaseDate: Date
 });
 
+// const connectedState = 1;
+// mongoose.connection.readyState == connectedState;
 const express = require('express'), bodyParser = require('body-parser');
 const app = express()
 app.use(bodyParser.json());

@@ -45,13 +45,6 @@ jobs:
           # Optional - this sets your Kubernetes context's current namespace after logging in.
           namespace: ${{ env.OPENSHIFT_NAMESPACE }} 
         
-      # - name: Create MongoDB
-      #   run: |
-      #     oc new-app -e MONGODB_USER=${{ secrets.MONGO_USER }} -e MONGODB_PASSWORD=${{ secrets.MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ secrets.MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ secrets.MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-36-rhel7 --name mongodb
-
-      - name: Create User
-        run: |    
-          CREATE_USER_CMD='db.createUser( { user: "${{ secrets.MONGO_USER }}", pwd: "${{ secrets.MONGO_PASSWORD }}", customData: { }, roles: [ { role: "clusterAdmin", db: "admin" }, { role: "readAnyDatabase", db: "admin" }, "readWrite"] }, { w: "majority" , wtimeout: 5000 } )' 
-          oc exec mongodb -- bash -c "mongo -u ${{ secrets.MONGO_ADMIN_USER }} -p password ${{ secrets.MONGO_ADMIN_PASSWORD }} --eval $CREATE_USER_CMD"
-
-          
+      - name: Create MongoDB
+        run: |
+          oc new-app -e MONGODB_USER=${{ secrets.MONGO_USER }} -e MONGODB_PASSWORD=${{ secrets.MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ secrets.MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ secrets.MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-36-rhel7 --name mongodb

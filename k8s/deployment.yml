@@ -54,4 +54,4 @@ spec:
         - name: "MONGO_SERVER"
           value: "mongodb"
         - name: "APP_PORT"
-          value: 80
+          value: "80"

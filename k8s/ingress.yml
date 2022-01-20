@@ -20,6 +20,6 @@ spec:
         pathType: "ImplementationSpecific"
         backend:
           service:
-            name: thelibrary2
+            name: thelibrary
             port:
               number: 3000

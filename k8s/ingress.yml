@@ -5,7 +5,7 @@ metadata:
   namespace: "thelibrary2"
 spec:
   rules:
-  - host: http://library-thelibrary2.apps.na46.prod.nextcle.com
+  - host: library-thelibrary2.apps.na46.prod.nextcle.com
     http:
       paths:
       - backend:

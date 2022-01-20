@@ -9,7 +9,6 @@ const APP_PORT = Number(process.env.APP_PORT) || 3000;
 
 (async () => await mongoose
   .connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}:27017/${MONGO_DATABASE}`, {
-    useMongoClient: true,
     authSource: MONGO_ADMIN_DATABASE,
     connectTimeoutMS: 30000
   })

@@ -24,8 +24,6 @@ jobs:
           image: the-library
           tags: latest ${{ github.sha }}
 
-      # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
-      # in which case 'username' and 'password' can be omitted.
       - name: Push To quay.io
         id: push-to-quay
         uses: redhat-actions/push-to-registry@v2
@@ -44,29 +42,13 @@ jobs:
       - name: Authenticate and set context
         uses: redhat-actions/oc-login@v1
         env:
-          # These can be stored in secrets, if desired.
           OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USER }}
           OPENSHIFT_NAMESPACE: ${{ env.OPENSHIFT_NAMESPACE }}
 
         with:
-          # URL to your OpenShift cluster.
-          # Refer to Step 2.
           openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
-
-          # Authentication Token. Can use username and password instead.
-          # Refer to Step 3.
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          # Credentials, if desired instead of token.
-          # Username and password override token if they are set.
-          # openshift_username: ${{ secrets.OPENSHIFT_USER }}
-          # openshift_password: ${{ secrets.OPENSHIFT_PASSWORD }}
-
-          # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: false
-          # This method is more secure, if the certificate from Step 4 is available.
-          # certificate_authority_data: ${{ secrets.CA_DATA }}
-
-          # Optional - this sets your Kubernetes context's current namespace after logging in.
           namespace: ${{ env.OPENSHIFT_NAMESPACE }} 
  
       - name: Deploy to OpenShift

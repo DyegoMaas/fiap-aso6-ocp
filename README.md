@@ -1,45 +1,16 @@
 # fiap-aso6-ocp
 
-[![Docker Repository on Quay](https://quay.io/repository/dyego_maas/the-library/status "Docker Repository on Quay")](https://quay.io/repository/dyego_maas/the-library)
+# API 
 
-## OpenShift Container Platform
+A aplicação ficou disponibilizada durante o desenvolvimento (enquanto o ambiente do OpenShift estava rodando) no endereço: 
 
-Criar projeto:
+https://library-thelibrary2.apps.na46.prod.nextcle.com/library/
 
--> Developer -> Add -> Git -> Entrar url do Git do projeto. Vai gerar um deployment
+O roteamento foi feito via Ingress.
 
-Comando usado para criar o postgres a partir de um template OCP (OpenShift Container Platform?):
- 
-```
-oc new-app postgresql-persistent --name sample-database --param DATABASE_SERVICE_NAME=sample-database --param POSTGRESQL_USER=sampledb --param POSTGRESQL_PASSWORD=sampledb --param POSTGRESQL_DATABASE=sampledb
-```
+# Imagem Docker
 
-Comando usado para atualizar a variável de ambiente do banco:
-
-```
-oc set env deployment blog-django-py-git DATABASE_URL=postgresql://sample-database:5432/sampledb
-```
-
-O mesmo vale para outras variáveis e secrets da aplicação.
-
-## OC
-
-### Login
-
-`oc login`
-
-### Criar recursos
-
-Criar os recursos no OpenShift a partir dos manifestos em uma pasta.
-
-`oc create -R https://raw.githubusercontent/DyegoMaas/fiap-aso6-ocp/main/k8s`
-
-Alternativa é fazer um por um usando `oc create -f arquivo.yaml`.
-
-
-
-
-
+Publicada no Quay.io em https://quay.io/repository/dyego_maas/the-library
 
 ## TODO
 

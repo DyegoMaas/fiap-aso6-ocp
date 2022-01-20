@@ -1,6 +1,16 @@
 # fiap-aso6-ocp
 
-# API 
+A aplicação implementa um repositório de livros.
+
+Tecnologias utilizadas:
+
+- GitHub Actions para CI/CD
+- Servidor Express, Node.js 16
+- MongoDB 3.6, acessado via biblioteca Mongoose
+- Quay.io como repositório de imagem Docker
+- Deploy na plataforma OpenShift
+
+## API 
 
 A aplicação ficou disponibilizada durante o desenvolvimento (enquanto o ambiente do OpenShift estava rodando) no endereço: 
 
@@ -8,7 +18,7 @@ https://library-thelibrary2.apps.na46.prod.nextcle.com/library/
 
 O roteamento foi feito via Ingress.
 
-# Imagem Docker
+## Imagem Docker
 
 Publicada no Quay.io em https://quay.io/repository/dyego_maas/the-library
 

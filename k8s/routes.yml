@@ -4,7 +4,8 @@ metadata:
   name: library
   namespace: "thelibrary2"
 spec:
-  path: /library(/|$)(.*)
+  host: hello-openshift-hello-openshift.<Ingress_Domain>
+  path: /library(.*)
   to:
     kind: Service
     name: library

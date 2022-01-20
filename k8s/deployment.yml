@@ -46,5 +46,12 @@ spec:
             secretKeyRef:
               key:  mongo-database
               name: library-auth
+        - name: "MONGO_ADMIN_DATABASE"
+          valueFrom:
+            secretKeyRef:
+              key:  mongo-admin-database
+              name: library-auth
         - name: "MONGO_SERVER"
           value: "mongodb"
+        - name: "APP_PORT"
+          value: 80

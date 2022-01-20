@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 const MONGO_SERVER = process.env.MONGO_SERVER;
 const MONGO_USER = process.env.MONGO_USER;
 const MONGO_PASSWORD = encodeURIComponent(process.env.MONGO_PASSWORD);
-const MONGO_DATABASE = process.env.MONGO_DATABASE;
+const MONGO_ADMIN_DATABASE = process.env.MONGO_ADMIN_DATABASE;
+const APP_PORT = process.env.APP_PORT || 3000;
 
 (async () => await mongoose
-  .connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}:27017/${MONGO_DATABASE}?connectTimeoutMS=30000`)
+  .connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}:27017/${MONGO_ADMIN_DATABASE}?connectTimeoutMS=30000`)
   .then(
     () => {
       console.log('conectou')
@@ -22,8 +23,6 @@ const Book = mongoose.model('Books', {
 const express = require('express'), bodyParser = require('body-parser');
 const app = express()
 app.use(bodyParser.json());
-
-const port = 3000
 
 app.get('/', (req, res) => {
   const secret = process.env.LIBRARY_SECRET
@@ -44,6 +43,6 @@ app.post('/books', (req, res) => {
   
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(APP_PORT, () => {
+  console.log(`Example app listening at http://localhost:${APP_PORT}`)
 })

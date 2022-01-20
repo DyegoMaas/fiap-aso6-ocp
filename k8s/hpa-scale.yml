@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hpa-atividade-fiap
-  namespace: "thelibrary2"
+  namespace: "thelibrary3"
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

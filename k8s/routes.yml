@@ -2,7 +2,7 @@
 # kind: Route
 # metadata:
 #   name: library
-#   namespace: "thelibrary2"
+#   namespace: "thelibrary3"
 # spec:
 #   host: hello-openshift-hello-openshift.<Ingress_Domain>
 #   path: /library(.*)

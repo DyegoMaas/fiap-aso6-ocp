@@ -2,13 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: library
-  namespace: "thelibrary2"
+  namespace: "thelibrary3"
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-  - host: library-thelibrary2.apps.na46.prod.nextcle.com
+  - host: library-thelibrary3.apps.na46.prod.nextcle.com
     http:
       paths:
       - backend:

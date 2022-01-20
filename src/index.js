@@ -36,10 +36,10 @@ app.get('/', (req, res) => {
 
 const connectedState = 1;
 app.get('/healthcheck', (req, res) => {
-
-  
-  mongoose.connection.readyState == connectedState;
-  res.status(503).send('Server unavailable')
+  if (mongoose.connection.readyState == connectedState)
+    res.send('Healthy')
+  else 
+    res.status(503).send('Server unavailable')
 })
 
 app.get('/books', async (req, res) => {

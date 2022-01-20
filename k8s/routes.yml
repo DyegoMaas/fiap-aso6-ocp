@@ -1,13 +1,13 @@
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: library
-  namespace: "thelibrary2"
-spec:
-  host: hello-openshift-hello-openshift.<Ingress_Domain>
-  path: /library(.*)
-  to:
-    kind: Service
-    name: library
-  port:
-    targetPort: 3000
+# apiVersion: route.openshift.io/v1
+# kind: Route
+# metadata:
+#   name: library
+#   namespace: "thelibrary2"
+# spec:
+#   host: hello-openshift-hello-openshift.<Ingress_Domain>
+#   path: /library(.*)
+#   to:
+#     kind: Service
+#     name: library
+#   port:
+#     targetPort: 3000

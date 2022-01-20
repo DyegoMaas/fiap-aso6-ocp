@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: library
+  namespace: "thelibrary2"
+spec:
+  rules:
+  - host: http://library-thelibrary2.apps.na46.prod.nextcle.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: library
+            port:
+              number: 3000
+        path: /library(/|$)(.*)
+        pathType: Exact

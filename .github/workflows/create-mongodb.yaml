@@ -47,4 +47,4 @@ jobs:
         
       - name: Create MongoDB
         run: |
-          oc new-app -e MONGODB_USER=${{ secrets.MONGO_USER }} -e MONGODB_PASSWORD=${{ secrets.MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ secrets.MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ secrets.MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-26-rhel7 --name mongodb
+          oc new-app -e MONGODB_USER=${{ secrets.MONGO_USER }} -e MONGODB_PASSWORD=${{ secrets.MONGO_PASSWORD }} -e MONGODB_DATABASE=${{ secrets.MONGO_DATABASE }} -e MONGODB_ADMIN_PASSWORD=${{ secrets.MONGO_ADMIN_PASSWORD }} registry.redhat.io/rhscl/mongodb-36-rhel7 --name mongodb

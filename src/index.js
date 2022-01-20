@@ -3,11 +3,16 @@ const mongoose = require('mongoose');
 const MONGO_SERVER = process.env.MONGO_SERVER;
 const MONGO_USER = process.env.MONGO_USER;
 const MONGO_PASSWORD = encodeURIComponent(process.env.MONGO_PASSWORD);
+const MONGO_DATABASE = process.env.MONGO_DATABASE;
 const MONGO_ADMIN_DATABASE = process.env.MONGO_ADMIN_DATABASE;
 const APP_PORT = Number(process.env.APP_PORT) || 3000;
 
 (async () => await mongoose
-  .connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}:27017/${MONGO_ADMIN_DATABASE}?connectTimeoutMS=30000`)
+  .connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}:27017/${MONGO_DATABASE}`, {
+    useMongoClient: true,
+    authSource: MONGO_ADMIN_DATABASE,
+    connectTimeoutMS: 30000
+  })
   .then(
     () => {
       console.log('conectou')
@@ -20,8 +25,7 @@ const Book = mongoose.model('Books', {
   releaseDate: Date
 });
 
-// const connectedState = 1;
-// mongoose.connection.readyState == connectedState;
+
 const express = require('express'), bodyParser = require('body-parser');
 const app = express()
 app.use(bodyParser.json());
@@ -29,6 +33,14 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   const secret = process.env.LIBRARY_SECRET
   res.send(`A Book API: secret=${secret}`)
+})
+
+const connectedState = 1;
+app.get('/healthcheck', (req, res) => {
+
+  
+  mongoose.connection.readyState == connectedState;
+  res.status(503).send('Server unavailable')
 })
 
 app.get('/books', async (req, res) => {

@@ -14,7 +14,7 @@ Tecnologias utilizadas:
 
 A aplicação ficou disponibilizada durante o desenvolvimento (enquanto o ambiente do OpenShift estava rodando) no endereço: 
 
-https://library-thelibrary2.apps.na46.prod.nextcle.com/library/
+https://library-thelibrary2.apps.na46.prod.nextcle.com/
 
 O roteamento foi feito via Ingress.
 

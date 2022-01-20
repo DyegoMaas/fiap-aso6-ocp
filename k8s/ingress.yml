@@ -16,7 +16,7 @@ spec:
   - host: library-thelibrary2.apps.na46.prod.nextcle.com 
     http:
       paths:
-      - path: "/library"
+      - path: "/"
         pathType: "ImplementationSpecific"
         backend:
           service:
